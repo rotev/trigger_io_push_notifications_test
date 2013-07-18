@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Trigger.io Push Notifications test</title>
+	</head>
+
+	<body>
+		<h1>Push Notifications Test</h1>
+
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				forge.event.messagePushed.addListener(function (msg) {
+					message_pushed(msg);
+				});
+
+				var channel = "trigger_io_push_notifications_test_channel";
+
+				forge.partners.parse.push.subscribe(channel,
+					function () {
+					  alert("subscribed to " + channel + " push notifications!");
+					  console.log("subscribed to " + channel + " push notifications!");
+					},
+					function (err) {
+					  alert("error subscribing to " + channel + " notifications: "+ JSON.stringify(err));
+					  console.log("error subscribing to " + channel + " notifications: "+ JSON.stringify(err));
+					});
+			});
+
+			function message_pushed(msg) {
+				alert(msg);
+			}
+		</script>
+
+	</body>
+
+</html>

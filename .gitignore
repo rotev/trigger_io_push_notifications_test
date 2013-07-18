@@ -1,0 +1,8 @@
+src/config.json
+src/identity.json
+local_config.json
+
+.lib
+.template
+development
+release
